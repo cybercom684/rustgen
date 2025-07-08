@@ -2,19 +2,35 @@ name: Rust
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags: ["v*.*.*"]  # nur bei Tag-Push wie v1.0.0
+  workflow_dispatch:   # manueller Trigger
 
 env:
   CARGO_TERM_COLOR: always
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: cargo build --verbose
+      - uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: actions/setup-rust@v1
+
+      - name: Build Release Binary
+        run: cargo build --release
+
+      - name: Create ZIP Archive
+        run: |
+          mkdir dist
+          cp target/release/rustgen dist/
+          cd dist
+          zip rustgen.zip rustgen
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/rustgen.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
