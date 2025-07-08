@@ -1,1 +1,0 @@
-C:\Users\Johannes\Downloads\rustgen\rustgen\target\debug\rustgen.exe: C:\Users\Johannes\Downloads\rustgen\rustgen\src\main.rs C:\Users\Johannes\Downloads\rustgen\rustgen\src\module.rs C:\Users\Johannes\Downloads\rustgen\rustgen\src\project.rs
