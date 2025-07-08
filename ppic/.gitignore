@@ -1,0 +1,12 @@
+# Rust build output
+/target/
+
+# Optional: Cargo lock file (für Libraries meist committen, für Binaries optional)
+# Cargo.lock
+
+# Optional Editor/IDE Dateien (Visual Studio Code)
+.vscode/
+
+# Optional Betriebssystem-spezifische Dateien (Windows)
+Thumbs.db
+.DS_Store
